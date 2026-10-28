@@ -60,9 +60,11 @@ main{max-width:1400px;margin:-36px auto 0;padding:0 16px 120px;position:relative
 .dados{padding:16px}
 .dados h2{font-size:15px;color:var(--verde-esc);margin-bottom:12px;display:flex;align-items:center;gap:8px}
 label.campo{display:block;font-size:13px;font-weight:600;color:var(--suave);margin:10px 0 5px}
-input[type=text],textarea{width:100%;border:1.5px solid var(--linha);border-radius:12px;padding:12px 13px;font-size:16px;font-family:inherit;color:var(--tinta);background:#fbfdfc;transition:border-color .2s,box-shadow .2s}
+input[type=text],textarea,select{width:100%;border:1.5px solid var(--linha);border-radius:12px;padding:12px 13px;font-size:16px;font-family:inherit;color:var(--tinta);background:#fbfdfc;transition:border-color .2s,box-shadow .2s}
 input[type=text]:focus,textarea:focus{outline:none;border-color:var(--verde);box-shadow:0 0 0 4px rgba(10,122,60,.12)}
 #placa,#carreta{text-transform:uppercase;letter-spacing:1px}
+select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2712%27 height=%278%27%3E%3Cpath d=%27M1 1l5 5 5-5%27 stroke=%27%2306542a%27 stroke-width=%272%27 fill=%27none%27/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px}
+input:disabled{opacity:.55}
 textarea{min-height:64px;resize:vertical}
 
 /* capa do tópico */
@@ -149,7 +151,12 @@ textarea{min-height:64px;resize:vertical}
         <div><label class="campo" for="motorista">Motorista</label>
         <input type="text" id="motorista" name="Motorista" placeholder="Nome completo" autocomplete="name"></div>
         <div><label class="campo" for="placa">Placa do veículo</label>
-        <input type="text" id="placa" name="Placa do veículo" placeholder="ABC1D23" maxlength="8" autocapitalize="characters">
+        <select id="tipoPlaca" name="Tipo de placa">
+          <option value="">Selecione o tipo de placa</option>
+          <option value="Tradicional">Placa tradicional (ABC1234)</option>
+          <option value="Mercosul">Placa Mercosul (ABC1D23)</option>
+        </select>
+        <input type="text" id="placa" name="Placa do veículo" placeholder="Escolha o tipo de placa" maxlength="7" autocapitalize="characters" autocomplete="off" disabled style="margin-top:8px">
         <label class="campo" for="carreta">Placa da carreta</label>
         <input type="text" id="carreta" name="Placa da carreta" placeholder="ABC1D23" maxlength="8" autocapitalize="characters"></div>
       </div>
@@ -161,7 +168,7 @@ textarea{min-height:64px;resize:vertical}
 
 <div class="rodape" id="rodape">
   <div class="in">
-    <div class="prog"><span id="progTxt">0 de 12 itens com foto</span><div class="trilho"><i id="progBar"></i></div></div>
+    <div class="prog"><span id="progTxt">0 de 6 itens com foto</span><div class="trilho"><i id="progBar"></i></div></div>
     <button class="enviar" id="btnEnviar" type="button">Enviar</button>
   </div>
 </div>
@@ -171,21 +178,20 @@ textarea{min-height:64px;resize:vertical}
 
 <script>
 const TOPICOS = [
-  ["Pneus e Freios - Cavalo", "Estado dos pneus, calibragem e freios do cavalo."],
-  ["Pneus e Freios - Carreta", "Estado dos pneus, calibragem e freios da carreta."],
-  ["Documentação atualizada", "Documentos do veículo e do motorista."],
-  ["Limpeza e Vedação", "Baú limpo, sem furos e bem vedado."],
-  ["Sinalização", "Faróis, lanternas, setas e faixas refletivas."],
-  ["Equipamentos de segurança", "Extintor, triângulo, macaco e chave de roda."],
-  ["Calça e camisa", "Vestimenta padrão apresentável."],
-  ["Capacete com Jugular", "Proteção contra impactos e quedas de objetos em áreas operacionais."],
-  ["Colete Refletivo", "Visibilidade máxima em áreas de tráfego intenso de veículos."],
-  ["Óculos de Segurança", "Proteção contra poeira, partículas e respingos na carga e descarga."],
-  ["Calçado de Segurança", "Botina com biqueira contra quedas de objetos e superfícies irregulares."],
-  ["Equipamento de rastreador", "Teclado e trava de baú."]
+  ["Iluminação", ""],
+  ["Pneus / Estepe", ""],
+  ["Limpeza", ""],
+  ["Equipamentos de segurança", "Extintor / macaco / chave de roda"],
+  ["EPI", "Capacete / colete / bota / óculos"],
+  ["Equipamentos de Rastreador", "Teclado / trava de baú"]
 ];
 // numeração antiga (o antigo item 1 foi removido)
-const NUM = ["2.1","2.2","3","4","5","6","7","8","9","10","11","12"];
+const NUM = ["2","3","4","5","6","7"];
+// formato das placas
+const PADRAO = {
+  Tradicional:{re:/^[A-Z]{3}[0-9]{4}$/, ex:"ABC1234", msg:"Placa tradicional: 3 letras e 4 números (ex.: ABC1234)."},
+  Mercosul:{re:/^[A-Z]{3}[0-9][A-Z][0-9]{2}$/, ex:"ABC1D23", msg:"Placa Mercosul: 3 letras, 1 número, 1 letra e 2 números (ex.: ABC1D23)."}
+};
 const MAX_FOTOS = 3, LADO = 1280, QUALIDADE = 0.72;
 const fotos = TOPICOS.map(() => []);   // arquivos já comprimidos por tópico
 
@@ -200,7 +206,7 @@ const galSVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strok
 const camSVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.5"/></svg>';
 $("#topicos").innerHTML = TOPICOS.map(([t,d],i)=>`
   <section class="card" id="t${i}">
-    <div class="capa"><span class="num">${NUM[i]}</span><h3>${t}</h3><small>${d}</small></div>
+    <div class="capa"><span class="num">${NUM[i]}</span><h3>${t}</h3>${d?`<small>${d}</small>`:""}</div>
     <div class="corpo">
       <div class="foto-acoes">
         <label class="foto-btn">${camSVG}<span>Câmera</span>
@@ -218,6 +224,23 @@ $("#topicos").innerHTML = TOPICOS.map(([t,d],i)=>`
     </div>
   </section>`).join("");
 
+// placa: tipo escolhido define o formato aceito
+$("#tipoPlaca").addEventListener("change",e=>{
+  const p=$("#placa"), tipo=e.target.value;
+  p.disabled=!tipo; p.value=""; p.placeholder=tipo?PADRAO[tipo].ex:"Escolha o tipo de placa";
+  if(tipo) p.focus();
+});
+$("#placa").addEventListener("input",e=>{
+  const tipo=$("#tipoPlaca").value; let v=e.target.value.toUpperCase().replace(/[^A-Z0-9]/g,"");
+  let out="";
+  for(const ch of v){
+    const pos=out.length; if(pos>=7) break;
+    const letra=/[A-Z]/.test(ch);
+    const querLetra = pos<3 || (tipo==="Mercosul" && pos===4);
+    if(querLetra===letra) out+=ch;
+  }
+  e.target.value=out;
+});
 // animação de entrada ao rolar
 const obs = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visivel");obs.unobserve(e.target)}}),{threshold:.08});
 document.querySelectorAll(".card").forEach(c=>obs.observe(c));
@@ -285,7 +308,10 @@ function avisar(msg){const a=$("#aviso");a.textContent=msg;a.classList.add("on")
 $("#btnEnviar").onclick=()=>{
   const mot=$("#motorista").value.trim(), placa=$("#placa").value.trim().toUpperCase();
   if(!mot){avisar("Informe o nome do motorista.");$("#motorista").focus();return}
+  const tipo=$("#tipoPlaca").value;
+  if(!tipo){avisar("Escolha o tipo de placa: tradicional ou Mercosul.");$("#tipoPlaca").focus();return}
   if(!placa){avisar("Informe a placa do veículo.");$("#placa").focus();return}
+  if(!PADRAO[tipo].re.test(placa)){avisar(PADRAO[tipo].msg);$("#placa").focus();return}
   // basta um tópico preenchido (foto ou comentário); só os preenchidos vão no e-mail
   const preenchido=i=>fotos[i].length>0||$("#c"+i).value.trim()!=="";
   const usados=TOPICOS.map((_,i)=>i).filter(preenchido);
