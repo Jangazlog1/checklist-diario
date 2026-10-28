@@ -80,7 +80,6 @@ textarea{min-height:64px;resize:vertical}
 .foto-btn:active{transform:scale(.97)}
 .foto-btn{position:relative;overflow:hidden}
 .arquivo-foto{position:absolute;left:0;top:0;width:1px;height:1px;opacity:0;pointer-events:none}
-.foto-acoes{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .foto-btn svg{width:22px;height:22px}
 .card.ok .foto-btn{border-style:solid;border-color:var(--verde-br);background:#fff}
 .fotos{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
@@ -184,6 +183,8 @@ const TOPICOS = [
   ["Calçado de Segurança", "Botina com biqueira contra quedas de objetos e superfícies irregulares."],
   ["Equipamento de rastreador", "Teclado e trava de baú."]
 ];
+// numeração antiga (o antigo item 1 foi removido)
+const NUM = ["2.1","2.2","3","4","5","6","7","8","9","10","11","12"];
 const MAX_FOTOS = 3, LADO = 1280, QUALIDADE = 0.72;
 const fotos = TOPICOS.map(() => []);   // arquivos já comprimidos por tópico
 
@@ -194,25 +195,19 @@ const slug = t => t.normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^A-Za-z0-9
 const agora = new Date();
 
 // montar tópicos
-const galSVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></svg>';
 const camSVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.5"/></svg>';
 $("#topicos").innerHTML = TOPICOS.map(([t,d],i)=>`
   <section class="card" id="t${i}">
-    <div class="capa"><span class="num">${i+1}</span><h3>${t}</h3><small>${d}</small></div>
+    <div class="capa"><span class="num">${NUM[i]}</span><h3>${t}</h3><small>${d}</small></div>
     <div class="corpo">
-      <div class="foto-acoes">
-        <label class="foto-btn">${camSVG}<span>Câmera</span>
-          <input type="file" accept="image/*" capture="environment" hidden data-i="${i}">
-        </label>
-        <label class="foto-btn">${galSVG}<span>Galeria</span>
-          <input type="file" accept="image/*" multiple class="arquivo-foto" data-i="${i}">
-        </label>
-      </div>
+      <label class="foto-btn">${camSVG}<span class="lbl">Tirar / enviar foto</span>
+        <input type="file" accept="image/*" multiple class="arquivo-foto" data-i="${i}">
+      </label>
       <div class="processando">Preparando foto…</div>
       <div class="fotos"></div>
       <div class="arquivos" hidden></div>
       <label class="campo" for="c${i}">Comentário</label>
-      <textarea id="c${i}" name="${i+1}. ${t} - Comentário" placeholder="Observações (opcional)"></textarea>
+      <textarea id="c${i}" name="${NUM[i]}. ${t} - Comentário" placeholder="Observações (opcional)"></textarea>
     </div>
   </section>`).join("");
 
@@ -246,6 +241,7 @@ function desenhar(i){
     lista.appendChild(d);
   });
   card.classList.toggle("ok",fotos[i].length>0);
+  card.querySelector(".lbl").textContent = fotos[i].length ? (fotos[i].length<MAX_FOTOS?"Adicionar outra foto":"Limite de fotos atingido") : "Tirar / enviar foto";
 
   progresso();
 }
@@ -259,7 +255,7 @@ document.addEventListener("change",async e=>{
   for(const f of novos){
     try{
       const b=await comprimir(f);
-      const nome=`${String(i+1).padStart(2,"0")}_${slug(TOPICOS[i][0])}_${fotos[i].length+1}.jpg`;
+      const nome=`${NUM[i].replace(".","-").padStart(2,"0")}_${slug(TOPICOS[i][0])}_${fotos[i].length+1}.jpg`;
       fotos[i].push(new File([b],nome,{type:"image/jpeg"}));
     }catch(_){avisar("Não foi possível ler uma das fotos.")}
   }
@@ -284,7 +280,7 @@ $("#btnEnviar").onclick=()=>{
   const usados=TOPICOS.map((_,i)=>i).filter(preenchido);
   if(!usados.length){avisar("Preencha pelo menos um item (foto ou comentário).");$("#t0").scrollIntoView({behavior:"smooth",block:"center"});return}
   TOPICOS.forEach((_,i)=>{$("#c"+i).disabled=!preenchido(i)});
-  $("#itensEnviados").value=usados.map(i=>(i+1)+". "+TOPICOS[i][0]).join(" | ");
+  $("#itensEnviados").value=usados.map(i=>NUM[i]+". "+TOPICOS[i][0]).join(" | ");
 
   $("#placa").value=placa;
   const carreta=$("#carreta").value.trim().toUpperCase(); $("#carreta").value=carreta;
@@ -294,7 +290,7 @@ $("#btnEnviar").onclick=()=>{
   $("#proximo").value=location.href.split("?")[0]+"?enviado=1";
   // monta o envio com as fotos comprimidas anexadas diretamente (FormSubmit)
   const fd=new FormData($("#form"));
-  fotos.forEach((lista,i)=>lista.forEach((f,k)=>fd.append(`Foto_${String(i+1).padStart(2,"0")}_${k+1}_${slug(TOPICOS[i][0])}`,f,f.name)));
+  fotos.forEach((lista,i)=>lista.forEach((f,k)=>fd.append(`Foto_${NUM[i].replace(".","-").padStart(2,"0")}_${k+1}_${slug(TOPICOS[i][0])}`,f,f.name)));
   $("#carregando").style.display="grid";
   $("#btnEnviar").disabled=true;
   const ctl=new AbortController(), limite=setTimeout(()=>ctl.abort(),120000);
