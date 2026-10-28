@@ -62,7 +62,7 @@ main{max-width:1400px;margin:-36px auto 0;padding:0 16px 120px;position:relative
 label.campo{display:block;font-size:13px;font-weight:600;color:var(--suave);margin:10px 0 5px}
 input[type=text],textarea{width:100%;border:1.5px solid var(--linha);border-radius:12px;padding:12px 13px;font-size:16px;font-family:inherit;color:var(--tinta);background:#fbfdfc;transition:border-color .2s,box-shadow .2s}
 input[type=text]:focus,textarea:focus{outline:none;border-color:var(--verde);box-shadow:0 0 0 4px rgba(10,122,60,.12)}
-#placa{text-transform:uppercase;letter-spacing:1px}
+#placa,#carreta{text-transform:uppercase;letter-spacing:1px}
 textarea{min-height:64px;resize:vertical}
 
 /* capa do tópico */
@@ -145,8 +145,10 @@ textarea{min-height:64px;resize:vertical}
       <div class="linha">
         <div><label class="campo" for="motorista">Motorista</label>
         <input type="text" id="motorista" name="Motorista" placeholder="Nome completo" autocomplete="name"></div>
-        <div><label class="campo" for="placa">Placa</label>
-        <input type="text" id="placa" name="Placa" placeholder="ABC1D23" maxlength="8" autocapitalize="characters"></div>
+        <div><label class="campo" for="placa">Placa do veículo</label>
+        <input type="text" id="placa" name="Placa do veículo" placeholder="ABC1D23" maxlength="8" autocapitalize="characters">
+        <label class="campo" for="carreta">Placa da carreta</label>
+        <input type="text" id="carreta" name="Placa da carreta" placeholder="ABC1D23" maxlength="8" autocapitalize="characters"></div>
       </div>
     </section>
 
@@ -156,7 +158,7 @@ textarea{min-height:64px;resize:vertical}
 
 <div class="rodape" id="rodape">
   <div class="in">
-    <div class="prog"><span id="progTxt">0 de 11 itens com foto</span><div class="trilho"><i id="progBar"></i></div></div>
+    <div class="prog"><span id="progTxt">0 de 12 itens com foto</span><div class="trilho"><i id="progBar"></i></div></div>
     <button class="enviar" id="btnEnviar" type="button">Enviar</button>
   </div>
 </div>
@@ -166,8 +168,8 @@ textarea{min-height:64px;resize:vertical}
 
 <script>
 const TOPICOS = [
-  ["Itens para amarração da carga (Dry van)", "Cintas, catracas e demais itens de amarração."],
-  ["Pneus e Freios", "Estado dos pneus, calibragem e freios."],
+  ["Pneus e Freios - Cavalo", "Estado dos pneus, calibragem e freios do cavalo."],
+  ["Pneus e Freios - Carreta", "Estado dos pneus, calibragem e freios da carreta."],
   ["Documentação atualizada", "Documentos do veículo e do motorista."],
   ["Limpeza e Vedação", "Baú limpo, sem furos e bem vedado."],
   ["Sinalização", "Faróis, lanternas, setas e faixas refletivas."],
@@ -176,7 +178,8 @@ const TOPICOS = [
   ["Capacete com Jugular", "Proteção contra impactos e quedas de objetos em áreas operacionais."],
   ["Colete Refletivo", "Visibilidade máxima em áreas de tráfego intenso de veículos."],
   ["Óculos de Segurança", "Proteção contra poeira, partículas e respingos na carga e descarga."],
-  ["Calçado de Segurança", "Botina com biqueira contra quedas de objetos e superfícies irregulares."]
+  ["Calçado de Segurança", "Botina com biqueira contra quedas de objetos e superfícies irregulares."],
+  ["Equipamento de rastreador", "Teclado e trava de baú."]
 ];
 const MAX_FOTOS = 3, LADO = 1280, QUALIDADE = 0.72;
 const fotos = TOPICOS.map(() => []);   // arquivos já comprimidos por tópico
@@ -266,7 +269,7 @@ function avisar(msg){const a=$("#aviso");a.textContent=msg;a.classList.add("on")
 $("#btnEnviar").onclick=()=>{
   const mot=$("#motorista").value.trim(), placa=$("#placa").value.trim().toUpperCase();
   if(!mot){avisar("Informe o nome do motorista.");$("#motorista").focus();return}
-  if(!placa){avisar("Informe a placa.");$("#placa").focus();return}
+  if(!placa){avisar("Informe a placa do veículo.");$("#placa").focus();return}
   // basta um tópico preenchido (foto ou comentário); só os preenchidos vão no e-mail
   const preenchido=i=>fotos[i].length>0||$("#c"+i).value.trim()!=="";
   const usados=TOPICOS.map((_,i)=>i).filter(preenchido);
@@ -275,9 +278,10 @@ $("#btnEnviar").onclick=()=>{
   $("#itensEnviados").value=usados.map(i=>(i+1)+". "+TOPICOS[i][0]).join(" | ");
 
   $("#placa").value=placa;
+  const carreta=$("#carreta").value.trim().toUpperCase(); $("#carreta").value=carreta;
   const dh=new Date().toLocaleString("pt-BR");
   $("#datahora").value=dh;
-  $("#assunto").value=`Checklist Diário - ${placa} - ${mot} - ${dh}`;
+  $("#assunto").value=`Checklist Diário - ${placa}${carreta?" / "+carreta:""} - ${mot} - ${dh}`;
   $("#proximo").value=location.href.split("?")[0]+"?enviado=1";
   // monta o envio com as fotos comprimidas anexadas diretamente (FormSubmit)
   const fd=new FormData($("#form"));
