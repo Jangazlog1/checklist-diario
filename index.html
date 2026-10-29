@@ -348,7 +348,7 @@ $("#btnEnviar").onclick=()=>{
   $("#carregando").style.display="grid";
   $("#btnEnviar").disabled=true;
   const ctl=new AbortController(), limite=setTimeout(()=>ctl.abort(),120000);
-  fetch($("#form").action,{method:"POST",body:fd,mode:"no-cors",signal:ctl.signal})
+  fetch($("#form").action,{method:"POST",body:fd,mode:"no-cors",referrer:location.href,referrerPolicy:"unsafe-url",signal:ctl.signal})
     .then(()=>{clearTimeout(limite);$("#carregando").style.display="none";$("#form").style.display="none";$("#rodape").style.display="none";$("#sucesso").style.display="block";window.scrollTo(0,0)})
     .catch(()=>{clearTimeout(limite);$("#carregando").style.display="none";$("#btnEnviar").disabled=false;TOPICOS.forEach((_,i)=>{$("#c"+i).disabled=false});avisar("Falha no envio. Verifique a internet e tente de novo.")});
 };
