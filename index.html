@@ -75,6 +75,10 @@ textarea{min-height:64px;resize:vertical}
 .card.ok .capa .num{background:#fff;color:var(--verde)}
 .capa h3{font-size:17px;font-weight:700;line-height:1.2}
 .capa small{font-size:12.5px;opacity:.88;margin-top:3px;line-height:1.3}
+.card.alerta .capa{background:linear-gradient(120deg,#b3141a 0%,#e0353b 100%)}
+.card.alerta .foto-btn{border-color:#eba3a5;background:#fdeeee;color:#9a1116}
+.card.alerta.ok{border-color:#d71920;box-shadow:0 6px 24px rgba(215,25,32,.18)}
+.card.alerta.ok .capa .num{color:#b3141a}
 .corpo{padding:14px 16px 16px}
 
 /* botão de foto */
@@ -173,7 +177,7 @@ textarea{min-height:64px;resize:vertical}
 
 <div class="rodape" id="rodape">
   <div class="in">
-    <div class="prog"><span id="progTxt">0 de 7 itens com foto</span><div class="trilho"><i id="progBar"></i></div></div>
+    <div class="prog"><span id="progTxt">0 de 9 itens com foto</span><div class="trilho"><i id="progBar"></i></div></div>
     <button class="enviar" id="btnEnviar" type="button">Enviar</button>
   </div>
 </div>
@@ -185,14 +189,16 @@ textarea{min-height:64px;resize:vertical}
 const TOPICOS = [
   ["Documento CNH / CRLV", ""],
   ["Iluminação", ""],
-  ["Pneus / Estepe", ""],
+  ["Pneus e Estepe - Cavalo", ""],
+  ["Pneus e Estepe - Carreta", ""],
   ["Limpeza", ""],
   ["Equipamentos de segurança", "Extintor / macaco / chave de roda"],
   ["EPI", "Capacete / colete / bota / óculos"],
-  ["Equipamentos de Rastreador", "Teclado / trava de baú"]
+  ["Equipamentos de Rastreador", "Teclado / trava de baú"],
+  ["Ocorrência de viagem", ""]
 ];
 // numeração antiga (o antigo item 1 foi removido)
-const NUM = ["1","2","3","4","5","6","7"];
+const NUM = ["1","2","3.1","3.2","4","5","6","7","8"];
 // formato das placas
 const PADRAO = {
   Tradicional:{re:/^[A-Z]{3}[0-9]{4}$/, ex:"ABC1234", msg:"Placa tradicional: 3 letras e 4 números (ex.: ABC1234)."},
@@ -211,7 +217,7 @@ const agora = new Date();
 const galSVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></svg>';
 const camSVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.5"/></svg>';
 $("#topicos").innerHTML = TOPICOS.map(([t,d],i)=>`
-  <section class="card" id="t${i}">
+  <section class="card${t==="Ocorrência de viagem"?" alerta":""}" id="t${i}">
     <div class="capa"><span class="num">${NUM[i]}</span><h3>${t}</h3>${d?`<small>${d}</small>`:""}</div>
     <div class="corpo">
       <div class="foto-acoes">
