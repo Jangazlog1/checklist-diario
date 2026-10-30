@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ofertas x Emissões Cargill</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap">
+<style>
+:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif}
+img{max-width:100%}
+[hidden]{display:none!important}
+:root{--bg:#f3f6f4;--card:#ffffff;--fg:#1c2420;--mut:#62706a;--line:#dde5e0;--acc:#1b6b3a;--accs:#e4f1e8;--warn:#b7791f;--warns:#fbf1dd;--bad:#c0392b;--bads:#fbe7e4;--chip:#17201b;--chipfg:#fff;
+--fd:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;--fb:Barlow,Arial,Helvetica,sans-serif;--fm:"JetBrains Mono",Consolas,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101613;--card:#18201c;--fg:#e4ece7;--mut:#94a39b;--line:#2a3530;--acc:#4fb878;--accs:#1d3326;--warn:#e0a649;--warns:#33291a;--bad:#e5735f;--bads:#3a201c;--chip:#e4ece7;--chipfg:#101613;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#101613;--card:#18201c;--fg:#e4ece7;--mut:#94a39b;--line:#2a3530;--acc:#4fb878;--accs:#1d3326;--warn:#e0a649;--warns:#33291a;--bad:#e5735f;--bads:#3a201c;--chip:#e4ece7;--chipfg:#101613;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--fb);font-size:14px}
+.wrap{max-width:1080px;margin:0 auto;padding-block:20px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:18px}
+.hd{background:#1b6b3a;color:#fff;border-radius:8px;padding:18px 22px;display:grid;grid-template-columns:1fr minmax(0,auto) 1fr;gap:12px;align-items:center}
+.hd .sp{min-width:0}.hd .tt{text-align:center;min-width:0}.hd .rt{justify-self:end}
+@media (max-width:760px){.hd{grid-template-columns:1fr}.hd .sp{display:none}.hd .rt{justify-self:center;align-items:center}}
+.hd h1{font-family:var(--fd);font-size:clamp(30px,4.6vw,52px);line-height:1.1;font-weight:700;margin:0;text-wrap:balance;text-transform:uppercase;letter-spacing:.6px}
+.hd .when{font-family:var(--fm);font-size:12px;background:rgba(255,255,255,.14);padding:6px 10px;border-radius:5px;text-align:center;white-space:nowrap}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px 14px}
+.kpi .n{font-family:var(--fd);font-size:30px;font-weight:700;color:var(--acc);font-variant-numeric:tabular-nums;line-height:1}
+.kpi.w .n{color:var(--warn)}.kpi.z .n{color:var(--mut)}
+.kpi .l{font-size:10.5px;letter-spacing:.9px;text-transform:uppercase;color:var(--mut);margin-top:6px}
+.funil{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.bar{height:22px;border-radius:4px;background:var(--line);overflow:hidden;display:flex}
+.bar span{display:block;height:100%}
+.leg{display:flex;flex-wrap:wrap;gap:16px;font-size:12.5px;color:var(--mut)}
+.leg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+h2{font-family:var(--fd);font-size:17px;font-weight:600;color:var(--acc);margin:6px 0 0;letter-spacing:.3px;text-transform:uppercase}
+.box{border-radius:6px;padding:12px 16px;line-height:1.55;font-size:13px}
+.box.w{background:var(--warns);border:1.5px solid var(--warn)}
+.box.ok{background:var(--accs);border:1.5px solid var(--acc)}
+.tw{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:6px}
+table{width:100%;border-collapse:collapse;font-size:12.8px;min-width:760px}
+th{background:#1b6b3a;color:#fff;text-align:left;padding:9px 10px;font-weight:600;font-size:12px;white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums;white-space:nowrap}
+tbody tr:nth-child(odd){background:color-mix(in srgb,var(--accs) 55%,transparent)}
+.r{text-align:right}.mono{font-family:var(--fm);font-size:12px}
+.chip{display:inline-block;background:var(--chip);color:var(--chipfg);border-radius:4px;padding:2px 7px;font-family:var(--fm);font-size:11px}
+.pill{display:inline-block;border-radius:20px;padding:2px 9px;font-size:11.5px;font-weight:600}
+.p-tr{background:var(--accs);color:var(--acc)}.p-en{background:var(--bads);color:var(--bad)}
+.p-ag{background:var(--warns);color:var(--warn)}.p-ac{background:#2fbf6a;color:#fff}
+.canc{display:flex;flex-direction:column;gap:9px}.canc td{white-space:normal}.canc tr.vazio td{color:var(--mut);text-align:center;padding:14px}.p-ok{background:var(--acc);color:#fff}
+.rod{font-size:11.5px;color:var(--mut);border-top:1px solid var(--line);padding-top:12px;line-height:1.5}
+.hd .rt{display:flex;flex-direction:column;align-items:center;gap:8px}
+.logo{background:#fff;border-radius:8px;padding:10px 16px;line-height:0}.logo img{height:64px;display:block}
+@media (max-width:760px){.logo img{height:52px}}
+.gauge{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px 16px 18px;display:flex;flex-direction:column;align-items:center;gap:6px;max-width:420px;width:100%;align-self:center}
+.gauge h3{font-family:var(--fd);font-size:17px;font-weight:700;margin:0;letter-spacing:.4px;text-transform:uppercase;color:var(--fg)}
+.gauge svg{width:100%;max-width:340px;height:auto}
+.gauge .pc{font-family:var(--fd);font-size:24px;font-weight:600;color:var(--mut);font-variant-numeric:tabular-nums}
+.gauge .lg{font-size:12px;color:var(--mut)}
+.fhd{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:10px}
+.flt{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:12.5px;color:var(--mut)}
+.flt select{font:inherit;color:var(--fg);background:var(--card);border:1px solid var(--line);border-radius:5px;padding:6px 10px;min-width:150px}
+.flt select:focus-visible{outline:2px solid var(--acc);outline-offset:1px}
+.fcnt{font-variant-numeric:tabular-nums}
+.kfr{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px 14px 16px}
+.kfr .n{font-size:clamp(34px,5vw,52px)}
+@property --ang{syntax:'<angle>';initial-value:0deg;inherits:false}
+:root{--glow:#2fbf6a;--fx1:rgba(27,107,58,.10);--fx2:rgba(47,191,106,.08)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--glow:#4fd889;--fx1:rgba(79,184,120,.12);--fx2:rgba(47,191,106,.08)}}
+:root[data-theme="dark"]{--glow:#4fd889;--fx1:rgba(79,184,120,.12);--fx2:rgba(47,191,106,.08)}
+body{background:radial-gradient(900px 600px at 10% 0%,var(--fx1),transparent 70%),radial-gradient(800px 700px at 95% 40%,var(--fx2),transparent 70%),radial-gradient(700px 500px at 30% 100%,var(--fx1),transparent 70%),var(--bg);background-attachment:fixed;background-size:140% 140%,140% 140%,140% 140%,auto;animation:bgdrift 26s ease-in-out infinite alternate}
+@keyframes bgdrift{0%{background-position:0% 0%,100% 50%,30% 100%,0 0}100%{background-position:20% 15%,80% 30%,50% 80%,0 0}}
+.wrap{position:relative;margin-block:14px;border-radius:16px}
+.wrap::before,.wrap::after{content:"";position:absolute;inset:0;border-radius:16px;padding:2px;background:conic-gradient(from var(--ang),transparent 0deg,transparent 250deg,rgba(47,191,106,.25) 290deg,var(--glow) 340deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:edge 7s linear infinite;pointer-events:none}
+.wrap::after{filter:blur(8px);opacity:.75}
+.wrap{box-shadow:0 0 0 1px color-mix(in srgb,var(--acc) 22%,transparent),0 0 36px -10px color-mix(in srgb,var(--glow) 45%,transparent)}
+@keyframes edge{to{--ang:360deg}}
+.kpi,.funil,.box,.tw,.gauge,.hd{position:relative;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.kpi,.funil,.tw,.gauge{box-shadow:0 0 0 1px color-mix(in srgb,var(--acc) 10%,transparent),0 6px 18px -12px color-mix(in srgb,var(--glow) 55%,transparent)}
+.kpi:hover,.funil:hover,.box:hover,.tw:hover,.gauge:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--glow) 55%,var(--line));box-shadow:0 0 0 1px color-mix(in srgb,var(--glow) 35%,transparent),0 10px 26px -12px color-mix(in srgb,var(--glow) 70%,transparent)}
+.kpi::after,.funil::after,.box::after,.gauge::after,.hd::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,color-mix(in srgb,var(--glow) 16%,transparent),transparent);transform:skewX(-18deg);animation:shine 7s ease-in-out infinite;pointer-events:none}
+.hd::after{background:linear-gradient(100deg,transparent,rgba(255,255,255,.12),transparent)}
+.kpis .kpi:nth-child(2)::after{animation-delay:.35s}.kpis .kpi:nth-child(3)::after{animation-delay:.7s}.kpis .kpi:nth-child(4)::after{animation-delay:1.05s}.kpis .kpi:nth-child(5)::after{animation-delay:1.4s}
+.kfr::after{animation-delay:1.8s}.funil::after{animation-delay:2.2s}.box::after{animation-delay:2.6s}.gauge::after{animation-delay:3s}
+@keyframes shine{0%{left:-60%}35%,100%{left:130%}}
+.kpi .n{text-shadow:0 0 18px color-mix(in srgb,var(--glow) 35%,transparent)}
+.bar span:first-child{background-image:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent)!important;background-color:var(--acc)!important;background-size:200% 100%;animation:barflow 3.5s linear infinite}
+@keyframes barflow{from{background-position:200% 0}to{background-position:-200% 0}}
+h2{position:relative;padding-bottom:6px}
+h2::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:64px;border-radius:2px;background:linear-gradient(90deg,var(--acc),var(--glow),var(--acc));background-size:200% 100%;box-shadow:0 0 10px color-mix(in srgb,var(--glow) 60%,transparent);animation:barflow 4s linear infinite}
+.tw tbody tr{transition:background-color .2s ease}
+.tw tbody tr:hover{background:color-mix(in srgb,var(--glow) 14%,transparent)!important}
+.pill.p-ok{box-shadow:0 0 10px -2px color-mix(in srgb,var(--glow) 70%,transparent)}
+.gauge svg path:last-of-type{filter:drop-shadow(0 0 6px color-mix(in srgb,var(--glow) 55%,transparent))}
+@media (prefers-reduced-motion:reduce){body,.wrap::before,.wrap::after,.kpi::after,.funil::after,.box::after,.gauge::after,.hd::after,.bar span:first-child,h2::after{animation:none}.kpi:hover,.funil:hover,.box:hover,.tw:hover,.gauge:hover{transform:none}}
+.kpis .kpi{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.kpis .kpi .n{font-size:clamp(32px,4vw,44px)}
+body,body *{font-weight:700!important}
+svg text{font-weight:700!important}
+</style></head><body>
+<div class="wrap">
+  <header class="hd">
+    <div class="sp"></div>
+    <div class="tt"><h1>Ofertas x Emissões</h1></div>
+    <div class="rt"><div class="logo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABDCAYAAAB+8vx+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAABQYSURBVHhe7Zx7VFT3tce/58yTgWF4CAwvcaiDgkLANwqRXi2tbZprjY0Stck1rSYxJksrMRpNmjbRGtNc6oqJWcYsmmtimlhvF0avNSRiMD5BDT5ARFRQhpcwDMMwwzz2/cPh1N8cY2qWg9N4PmudtTh77/P7nTnnO/v3HDgiIkhI3GF4X4OExJ1AEpaEX5CEJeEXJGFJ+AVJWBJ+QRKWhF+QhCXhFyRhSfgFSVgSfkESloRfkIQl4Rc4aa3w1niIQOSB2+MBQCAQAA4gAs/zADjION77t0Q/krC+geauVlxqv4wLLRfR2HEVLZY2dNm60OOwwUMEpVwJrToEEcHhSIiIgyEqCT+INsAwaDAUcoVvcfcckrBuwOV24fK1Rhw4fxhHL1TiUnsDrPYeuD1ueMjjGy7AczwUMgX0umikJ47AlLT7kTF4JNQKFThwvuH3BJKwABARLrZdxt7TX+Bg3VFc6WhCn8sBz3d4NAqZHGGaMKTGpeBnmT/GJON48Ny910ze88Ky2q0orz2ET47+HbXNF26ZmW6XyOBw/EfaZBRkz4ReF+3r/l5zzwrLQx5cs3bg3bL/wVfnD6Ozx+ztmN9ZFDIFxiWPxjP5C5EYEe/r/t5yTwqLQKhvuYg3S99FxaUTcHvc4DkOSrkScl4OAOhzO9Hn6vO99DvBczwyB6dj2bTFGBI12Nf9veSeExYR4WxTDd7+4j183XAaPMchMTIBmYPTkRSZiMiQCHAch+auVtS11ONkQxVM5hbfYm4bnuMx1jAKL894HqFBob7u7x33nLAutl3Gul1FqDHVQh8ajZ9l/hjZQ8chNkwPlVwJuex6xnJ73LD19eJSWwMOXTiGsupyNHZchdvj9i3yX0bGy/DQmAfx5JT5UMlVvu7vFfeUsFosbfjjp/+NyksnMXHoODyaU4Ch0cm3nHciEPqcfWjsbMKBc4dQcvz/0Gz57hksNEiLVx9ahdGGLF/X94p7Rlg9jh68WboZe6pKMXXED/FoTgHiI2Jva57J5XHjnOk8/rfiU3x1/jC6ei2+Id8Kx3H40Ygf4qXpy8Fx/3rd/24EjLCcTidsNhuamppgNpvB8zzCwsKQmJgIjUbjG37b7DlVijf2bMTwuBS88MBvER0a9Z1eLBHB6ujBV+ePYPvRv6O6qfa2R5O6oFC8+/gGxIfHCbbu7m6YzWYmTqFQQK/XAwDsdjva2toYP8/ziI6OhkLxzRn3bnHXhdXe3o4DBw5g165dOHnyJLq7u9HX1weO46BUKhEbG4vc3FzMmjULqamp30kMl9oasHTbSmjVWrzw4G9h1P/gtjLVzXB73LjS0YR91eXYe/qL2+p/cRyHJflPYea4/xRsmzZtwttvvw2P55/zaLm5uXjrrbcAAPv27cMzzzwj+ABAr9ejuLgY8fGBN41xV4VVX1+Pl156CSUlJejp6YHbLX4xHMdBLpcjMzMTW7duRUpKim/ILelz9eGPu4pw4NwhrHjwt5icMvGOLhi7PW7Ut17GZ2e+QFn1AVztNP1LGWxK2mT8/qGVgsAfeeQRfPTRR+h/HTzPY+3atXjuuecAAEVFRViyZAlTxujRo1FaWoqwsDDGHgjcuSd8m9TV1eGJJ57Axx9/DIvFIohKLpcjODhYiCMiOJ1OVFRU4PXXX4fL5bqhlG+nxlSLo/WVyB02EeMMo+6oqOAd6Rn1yfiv3Dn4/UMrsfhHCzDJOB6J4fG3HPlZervh8n5mIkJlZaUgKgBQKpXIzc0Vzs+ePSv83c/QoUOh1Wp9zQHBXctYTz/9tCj1Jycn49lnn4Ver0dRUREOHTrEXJORkYGysjKEh4cz9lvx98pd2FFRgtdm/x56XYyv+45DIPQ4bDCZm3G5/Qoar11Bk9kEq70HdpcDHDio5EqkxA7FvImzIJfJYTKZMHjwYOZLExcXh5qaGmi1WhAR8vLy8OWXXzJ1vfPOO1iwYAFjCxjoLvDVV19RdHQ0ARCOqKgo2r17NzkcDvJ4PFRUVMT4AZDRaCSTyeRbHHk8HnI4HGS1Wqmzs5PMZjPZbDZyOp1ktnVRXUu97yW3xOVyUXd3NzkcDsbudrvJZrNRV1cX2Ww28ng8jN8Xj8dDDqeDumwWumbtoDZLO7V1X6MOayd1263C9du3bxd91okTJwr1d3R0UHJyMuMPCQmhw4cP+9QYOAx4xurr68MvfvEL7N69m7HPmTMHW7duFc63bt2KefPmMTHDhw/H/v37ER19fUG3v5ksKyvDvn37cOHCBfT09IDjOISEhMBoNCI/Px8TJkwQRk4OhwPl5eXo6upiyk5NTUVaWhpMJhM+/PBDHDlyBDNmzMDs2bMBADabDdu3b8f+/fvR1taG8PBwTJ8+HQ888AAsFguOHz/OZF+DwYCUlBS43W7s27dPVN/UqVOh0+ng8Xjw/PPPY/369Yx/7ty5KC4uhkwmw9mzZzF27FjYbDbBbzAYcPToUQwaNIi5LmDwVZq/qaiooIiICNE3dNu2bUzcmjVrRDHjxo2j7u5uIm9W2blzJz344IMUGxtLQUFBxPO8EMvzPGk0GkpISKDCwkJyu91ERNTZ2Ul5eXkUFRUlHNHR0fT+++9TaWkp5eXlUWhoKKlUKtq+fTsREZ0+fZoefvhhioyMJLlcTgBIJpNRXFwcbd68mf76179SQkIC6fV60uv1FBcXRx9++CEREbW3t1NGRgZT3/Dhw6m+/noWtdlslJeXJ/qsf/jDH4SM9uabbxLHcYz/Jz/5ifCZApEBF9bGjRuFl9N/6HQ6qq6uFmI8Hg8VFhZSdHQ0c8yfP5/cbje53W7auXMnJSUlCQ+c53kKDQ0lrVbLCAwAqdVqOnHiBBERmUwmGjZsGONXKpW0YcMGMhqNQnkxMTFUV1dHV69epfz8fNE99x/p6em0dOlSpk6VSkVnzpwhIqKTJ0+SUqlkrsnIyKCenh4iImpqahI1cwBox44dRN4v0PTp0xkfx3G0fPly4XkFIgMqLI/HQzNnzhQ9xAkTJpDVamXiqqurqaysjDlqa2uJiOjMmTOUmprKvMhf//rXtGPHDtq5cyfl5OSI6igqKiIionPnzpFer2d8CoWCsrOzGXHcd9995HA4aO3ataRQKJh4pVJJGRkZZDAYSK1W05AhQxj/kCFDqLe3l4iI/vSnP4nupaCgQMhGx48fp8jISMavVquppqaGyJvxDAaDqP6tW7cKzysQGVBhNTU1UVJSkuhBv/DCC76ht2T9+vWkVqtJoVCQQqGgcePGUXt7u+Bft26dqI5+YZWVlVFQUJDI35/xkpOTKTU1lRYtWkStra2UlpbGxCkUClqyZAmdPHmS9u7dS7GxsaKypk2bRm63mxwOB02bNk1Uz+uvvy7c67Zt20T3k56eTmazmYiIqqqqRBkvJCSEDh48KJQRiNzZSZ1vobKyEiaTibEplUrk5+cztm/DYDBg+fLlWLlyJVauXIlly5YJUxBEhKamJt9LMHLkSADA119/Dbvdzvjkcjny8/Pxl7/8BX/729+wfft2LF++HHv27EFdXR0TO3bsWBQWFuK+++5DTk4OhgwZwvgBICUlBRzHwWw2i+afVCoVhg0bJpwfO3YMDoeDiRk7dixCQkIAALW1tejrY/eFaTQaJCQkMLaAw1dp/mT58uWib3d8fDy1trb6ht4Sl8vFHG63m5xOJ3V1ddHhw4cpJSWFqUOj0ZDFYiG3200FBQWiexgzZgzTxyMislqtNHXqVCZOLpfT+vXrhRi73U6TJ08WlffWW28ReftXMpmM8UVERFBVVRWRd/rCt9nmOI6Ki4uFOl599VVR+VlZWUJTG6gMWMay2+04ceKErxkJCQm3NeEJADKZDDKZDFarFbW1tfj000/x5z//GYsXL8asWbNEWSYtLQ1arRZdXV2oqqpifGq1Gs8++yyTRQCgoaEBR44cYWwajQbZ2dnCud1uR3t7OxMDACNGjAC8s+W+y1Q6nQ5xcdcXn5ubm3H+/HnGr9FoMHbsWOG8pqaG8QNATk4OlEqlrzmgGDBhmc1mXLlyxdcMg8EAmUzG2JxOJ/r6+oTD6XQKc0REhIaGBhQXF+Ppp5/G3LlzsXDhQqxatQoffPABWlpamPkkjuMwatQoAEBTUxMuXrwo+AAgIiICkyZNEi1unz59Gt3d3YxNp9MxTZ/ZbBbNT0VFRWHo0KHAN4jCaDQiNPT6DtKamhrR9Xq9HlFRUcJ5bW0t4+d5Hrm5uXd8aepOM2B3Z7FYcO3aNV8zhg0bxrxUq9WKdevWYfXq1cLxyiuvoKGhAUSE8vJyPPXUU1iyZAk++ugjHD9+HL29vZg0aRKefPJJzJgxg3noPM8jIyMD8IrlxklGAIiJiUFkZCRjwzeszSUmJjILvk1NTSLxjRgxQsjA586dY3wAMHHiRMjl13ep3qy/Fx8fL6yV9vX1icoICgrCxIkTGVtA4ts2+oujR4+SVqsV9Rfef/99Ju706dOkUqmYGL1eT9XV1VRbW0sTJkxgJguTk5PpvffeowsXLlBPTw8tWrSI8QcFBVFpaSm5XC5atmyZqP6ZM2eKlm6IiObNmyeKXbBgATmdTiHmnXfeEY3YVqxYIUwlZGVlMT65XE6ff/45kbd/NXv2bFEd8+fPJ5fLRUREhw4dEvlHjBjxrUtJgcCAZazu7m7R6Ecul2PwYPZXK5WVlaK46OhoREVF4eOPP0ZFRYWwC0Cj0WD16tWYO3cukpOToVAo8OWXXzK7BIKDg5GQkACHw4Hq6uobSr1OamqqkEFuxHf0Cm826W+2+5dqbhyx8TyPKVOmgOM4dHd3i5pdrVaLMWPGAAB6enpEfUF4R68ymQxEhF27dvm6kZ6eLmq2A5EBE5bdbofT6WRsCoWCaVrcbjcOHjzIxMC74Y2I8MEHHzA7AGJiYjBt2jRhHfDKlSuipiM+Ph6DBg2C1WoVvWgAyMzMvGl/xWIRbzu+evWq0N8rLy9HaWkp4w8PD8fw4cMBAEeOHBE1k2lpaUL/qr29Ha2trYxfoVAgPT0d8K5plpWVMX6e55GWlsbYAhXxE/UT3slYke1G2tvbsX//fsam0Wjw6KOPoq6uTtSRDQkJYbYtf/bZZ6I5n2HDhkGr1aKzsxMtLeyPIGQyGTMCuxHfewOAnTt34o033sCGDRtQWFgo6jMmJiYiNDQURITPP/9cNIjoFw28GbGzs1M4B4DIyEgYjUbAK+wzZ84wfp7nkZqaytgClQETVlBQkGhvdl9fH/bu3YurV6+ipqYGL774Iurr6wW/TCbDww8/jMzMTNTU1IiG7o2NjSgpKUFVVRVKSkqwceNGxg8A48ePh1KpRF1dHaxWK+MzGo3C0N+Xm9lNJhNeeeUVrFmzBl1dXSLxJSUlQa1Ww+l0Ys+ePYzfN9ucO3cOPT09wjm8+9H66718+bLIr1AokJycDHizeyAzYMLS6/XQ6XSMzePx4LXXXsNjjz2GuXPn4t1332UyztChQ7F06VKRIPsxm81YtGgRCgoK8Jvf/AaNjY2MXyaTIScnB/DOcN/YFHMch8mTJ4umOvrpv84Xu92OvLy8m/pTUlIgl8vR0tIi6s/J5XKhmQSA8vJyJqMBwP333y981gsXLojEExERgbi4OFRVVWH//v04fPiwKCZQGDBhGQwG/PSnPxV1lNvb21FaWorKykrhQSsUCkyaNAkbN24UXkZ2dvZNs4jFYkFHRwcWL17MNDXwdpZjYq7vGj106BDzIuVyOcaPH39DNMsjjzyCX/3qV4iLi0NoaCgGDRqEzMxMFBYW4ne/+x0aGhqYeI7jkJmZCY7jUFtbK9pCrdFokJSUBHjv2XeiVqVSYfTo0cL52bNnRcIbOXIkent70dzcjEuXLqGzs1PUnAYKA7rRr7GxEatWrcInn3wCu90uakpkMhkiIiJQUFCAxx9/nBkBERG2bNmCl19+Wej0qlQqZGVlYdGiRfj5z3+O1atX49ixY0J5Op0OW7ZswaBBgzBlyhSmQ65SqbB58+ZbdoZtNhsOHjyIjo4OaDQaGI1GDBkyBBaLBXl5ecxcV3BwMA4cOIDMzEz84x//wNq1a5nPFx8fj02bNiE0NBQtLS2YM2cO83MvrVaLTZs2CSsAL774IrMZkuM4PPbYY/jlL3+JiooKqFQquN1uZGZmChsfA4kBFRYAtLW14cSJEzh16hRMJpPQ7wkLC0NycjKysrJgNBqh0+lEw+re3l7U1dWhoaEBvb29iI2NRWJiIuLi4iCXy9HW1sZMOHIch9jYWPA8j0uXLjFlcRyH+Pj4mzazDocDvb29wnn/jtT+ZvPs2bPIy8tjfuc3cuRIHDhwADqdDlarVZRJFAoFYmJiwHEcXC4Xrly5IuqDxcXFCffT2toq6mNFRkYiJCQE1dXVsFqtCA4OxvDhw0WtQCAw4MK6EY/HI4wWeT5w/o/n3r17sW3bNuHFKxQKLFmyBGlpaSAiFBcXY+HChUKfjed5PPfcc1izZo3oy+AvPB5PwDyvm+I7YypBtGXLFlIqlSSXy0kul5NKpaLVq1dTVVUV7d69m0aNGiXMhMM7+9+/Y1TiOnc1YwUq9fX1GDNmDNOchYWFISkpCS0tLWhubga8TWRwcDDWrl2LJ554IiCbpLuGr9Ikrm+NXrFiBWm1WtGPGPoPlUpFWVlZtHnzZrJYLL5F3PNIGesb6OzsxO7du1FSUoJTp06hu7sbHMchMjISBoMB2dnZmDp1KtLT06VMdRMkYd0Ct9sNs9kMm80Gl8sFzvt/JNRqNUJCQqBWq30vkfAiCUvCLwTweFXi3xlJWBJ+QRKWhF+QhCXhFyRhSfgFSVgSfkESloRfkIQl4RckYUn4BUlYEn5BEpaEX5CEJeEX/h8s5C4e0fAFUwAAAABJRU5ErkJggg==" alt="Cargill"></div><div class="when">Apurado em 30/10/2026 18:23</div></div>
+  </header>
+
+  <section class="kpis">
+    <div class="kpi"><div class="n">37</div><div class="l">Ofertas no período</div></div>
+    <div class="kpi"><div class="n">37</div><div class="l">Transferências</div></div>
+    <div class="kpi z"><div class="n">0</div><div class="l">Entregas</div></div>
+    <div class="kpi"><div class="n">6</div><div class="l">Ofertas emitidas</div></div>
+    <div class="kpi w"><div class="n">31</div><div class="l">Aguardando emissão</div></div>
+  </section>
+
+  <section class="kpi kfr" aria-label="Valor de fretes emitidos">
+    <div class="n">R$ 7.356,00</div><div class="l">Valor de fretes emitidos</div>
+  </section>
+
+  <section class="funil">
+    <div class="bar" aria-label="6 de 37 ofertas emitidas"><span style="width:16.2%;background:var(--acc)"></span><span style="width:83.8%;background:var(--warn)"></span></div>
+    <div class="leg"><span><i style="background:var(--acc)"></i>Emitidas: 6 (16,22%)</span><span><i style="background:var(--warn)"></i>Aguardando: 31 (83,78%)</span><span>Período: 29/10 a 30/10 • Critério: OF do e-mail = FOR na observação do CTRC</span></div>
+  </section>
+
+  <div class="box w"><b>POSIÇÃO DE 30/10 ÀS 18:23 — 37 OFERTAS, 6 EMITIDAS (16,22%).</b> Desde as 16:14 chegaram <b>2 ofertas novas</b>, as duas já aceitas: <b>2021508437</b> (16:26, expedição 30/10) e <b>2021508627</b> (16:45, expedição 02/11) — são <b>26 aceitas</b> aguardando CTRC. Nenhum CTRC novo: as <b>6 emitidas</b> seguem sendo as de 29/10 (SPN012442 a SPN012447). Nenhuma oferta do período foi cancelada. Das ofertas de 29/10 ainda aguardam: 2021495163, 2021495179 e 2021499680. Sem movimento novo desde as 17:24. No SSW as NFs 158339 (16:27), 158349 (16:47) e 158352 (18:06) ainda estão sem CTRC.</div>
+
+  <div class="fhd"><h2>Ofertas por dia</h2>
+    <div class="flt"><label for="fdata">Data da oferta</label><select id="fdata"></select><span id="fcnt" class="fcnt"></span></div></div>
+  <div class="tw"><table id="tofertas">
+    <thead><tr><th>OF</th><th>Recebida</th><th>Responder até</th><th>Tipo</th><th>Origem → Destino</th><th>Expedição</th><th>Entrega</th><th class="r">Volume (m³)</th><th class="r">Peso (kg)</th><th>CTRC</th><th>Situação</th></tr></thead>
+    <tbody>
+      <tr data-d="2026-10-29"><td class="mono">2021495069</td><td>10:00</td><td>10:05</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>30/10</td><td>31/10</td><td class="r">47,07</td><td class="r">29.039,95</td><td class="mono">SPN012447-8</td><td><span class="pill p-ok">Emitida 30/10 14:14</span></td></tr>
+      <tr data-d="2026-10-29"><td class="mono">2021495163</td><td>10:01</td><td>10:06</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>30/10</td><td>31/10</td><td class="r">47,07</td><td class="r">29.039,95</td><td>—</td><td><span class="pill p-ag">Aguardando</span></td></tr>
+      <tr data-d="2026-10-29"><td class="mono">2021495218</td><td>10:01</td><td>10:06</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>30/10</td><td>31/10</td><td class="r">41,01</td><td class="r">24.889,77</td><td class="mono">SPN012444-3</td><td><span class="pill p-ok">Emitida 30/10 08:58</span></td></tr>
+      <tr data-d="2026-10-29"><td class="mono">2021495172</td><td>10:03</td><td>10:08</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>30/10</td><td>31/10</td><td class="r">38,33</td><td class="r">23.323,62</td><td class="mono">SPN012445-1</td><td><span class="pill p-ok">Emitida 30/10 10:02</span></td></tr>
+      <tr data-d="2026-10-29"><td class="mono">2021495087</td><td>10:04</td><td>10:09</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>30/10</td><td>31/10</td><td class="r">19,69</td><td class="r">19.260,50</td><td class="mono">SPN012442-7</td><td><span class="pill p-ok">Emitida 29/10 22:11</span></td></tr>
+      <tr data-d="2026-10-29"><td class="mono">2021495089</td><td>10:04</td><td>10:09</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>30/10</td><td>31/10</td><td class="r">21,71</td><td class="r">22.684,03</td><td class="mono">SPN012446-0</td><td><span class="pill p-ok">Emitida 30/10 10:06</span></td></tr>
+      <tr data-d="2026-10-29"><td class="mono">2021495179</td><td>10:05</td><td>10:10</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>30/10</td><td>31/10</td><td class="r">47,07</td><td class="r">29.039,95</td><td>—</td><td><span class="pill p-ag">Aguardando</span></td></tr>
+      <tr data-d="2026-10-29"><td class="mono">2021495718</td><td>10:30</td><td>10:35</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>30/10</td><td>31/10</td><td class="r">21,48</td><td class="r">18.604,03</td><td class="mono">SPN012443-5</td><td><span class="pill p-ok">Emitida 30/10 07:53</span></td></tr>
+      <tr data-d="2026-10-29"><td class="mono">2021499680</td><td>14:32</td><td>14:37</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>30/10</td><td>30/10</td><td class="r">21,09</td><td class="r">20.276,00</td><td>—</td><td><span class="pill p-ag">Aguardando</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021503403</td><td>07:58</td><td>08:03</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>31/10</td><td>31/10</td><td class="r">24,83</td><td class="r">21.672,03</td><td>—</td><td><span class="pill p-ag">Aguardando</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021505930</td><td>12:12</td><td>12:17</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>31/10</td><td>31/10</td><td class="r">47,07</td><td class="r">29.039,95</td><td>—</td><td><span class="pill p-ac">Aceito</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021505933</td><td>12:13</td><td>12:18</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>31/10</td><td>31/10</td><td class="r">47,07</td><td class="r">29.039,95</td><td>—</td><td><span class="pill p-ac">Aceito</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021506068</td><td>12:13</td><td>12:18</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>31/10</td><td>31/10</td><td class="r">47,07</td><td class="r">29.039,95</td><td>—</td><td><span class="pill p-ac">Aceito</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021506026</td><td>12:14</td><td>12:19</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>31/10</td><td>31/10</td><td class="r">47,07</td><td class="r">29.039,95</td><td>—</td><td><span class="pill p-ac">Aceito</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021506110</td><td>12:15</td><td>12:20</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>31/10</td><td>31/10</td><td class="r">28,39</td><td class="r">21.238,24</td><td>—</td><td><span class="pill p-ac">Aceito</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021506076</td><td>12:15</td><td>12:20</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>03/11</td><td>04/11</td><td class="r">46,99</td><td class="r">21.962,11</td><td>—</td><td><span class="pill p-ac">Aceito</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021505978</td><td>12:16</td><td>12:21</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>03/11</td><td>04/11</td><td class="r">38,39</td><td class="r">18.679,39</td><td>—</td><td><span class="pill p-ac">Aceito</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021506080</td><td>12:16</td><td>12:21</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>03/11</td><td>04/11</td><td class="r">38,39</td><td class="r">18.679,39</td><td>—</td><td><span class="pill p-ac">Aceito</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021506084</td><td>12:17</td><td>12:22</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>03/11</td><td>04/11</td><td class="r">47,07</td><td class="r">29.039,95</td><td>—</td><td><span class="pill p-ac">Aceito</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021506087</td><td>12:18</td><td>12:23</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>03/11</td><td>04/11</td><td class="r">47,07</td><td class="r">29.039,95</td><td>—</td><td><span class="pill p-ac">Aceito</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021506033</td><td>12:18</td><td>12:23</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>03/11</td><td>04/11</td><td class="r">47,07</td><td class="r">29.039,95</td><td>—</td><td><span class="pill p-ac">Aceito</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021505991</td><td>12:19</td><td>12:24</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>03/11</td><td>04/11</td><td class="r">47,07</td><td class="r">29.039,95</td><td>—</td><td><span class="pill p-ac">Aceito</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021506088</td><td>12:19</td><td>12:24</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>03/11</td><td>04/11</td><td class="r">47,07</td><td class="r">29.039,95</td><td>—</td><td><span class="pill p-ag">Aguardando</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021506089</td><td>12:20</td><td>12:25</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>03/11</td><td>04/11</td><td class="r">34,93</td><td class="r">27.020,03</td><td>—</td><td><span class="pill p-ac">Aceito</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021506090</td><td>12:20</td><td>12:25</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>03/11</td><td>04/11</td><td class="r">34,93</td><td class="r">27.020,03</td><td>—</td><td><span class="pill p-ac">Aceito</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021506160</td><td>12:21</td><td>12:26</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>03/11</td><td>04/11</td><td class="r">23,00</td><td class="r">20.404,00</td><td>—</td><td><span class="pill p-ac">Aceito</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021506395</td><td>12:54</td><td>12:59</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>03/11</td><td>04/11</td><td class="r">34,93</td><td class="r">27.509,63</td><td>—</td><td><span class="pill p-ac">Aceito</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021506430</td><td>12:55</td><td>13:00</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>03/11</td><td>04/11</td><td class="r">38,39</td><td class="r">18.679,39</td><td>—</td><td><span class="pill p-ac">Aceito</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021506505</td><td>12:56</td><td>13:01</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>03/11</td><td>04/11</td><td class="r">38,39</td><td class="r">18.679,39</td><td>—</td><td><span class="pill p-ac">Aceito</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021506506</td><td>12:56</td><td>13:01</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>03/11</td><td>04/11</td><td class="r">47,07</td><td class="r">29.039,95</td><td>—</td><td><span class="pill p-ac">Aceito</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021506693</td><td>13:38</td><td>13:43</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>31/10</td><td>31/10</td><td class="r">21,53</td><td class="r">19.624,02</td><td>—</td><td><span class="pill p-ac">Aceito</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021506814</td><td>13:45</td><td>13:50</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>31/10</td><td>31/10</td><td class="r">27,74</td><td class="r">19.485,88</td><td>—</td><td><span class="pill p-ac">Aceito</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021508437</td><td>16:26</td><td>16:31</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>30/10</td><td>31/10</td><td class="r">22,17</td><td class="r">19.350,03</td><td>—</td><td><span class="pill p-ac">Aceito</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021508627</td><td>16:45</td><td>16:50</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>02/11</td><td>02/11</td><td class="r">46,54</td><td class="r">29.011,92</td><td>—</td><td><span class="pill p-ac">Aceito</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021505972</td><td>—</td><td>—</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>31/10</td><td>31/10</td><td class="r">47,07</td><td class="r">29.039,95</td><td>—</td><td><span class="pill p-ac">Aceito</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021506106</td><td>—</td><td>—</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>31/10</td><td>31/10</td><td class="r">47,07</td><td class="r">29.039,95</td><td>—</td><td><span class="pill p-ac">Aceito</span></td></tr>
+      <tr data-d="2026-10-30"><td class="mono">2021506462</td><td>—</td><td>—</td><td><span class="pill p-tr">Transferência</span></td><td>Mairinque → Mairinque 2</td><td>03/11</td><td>04/11</td><td class="r">41,46</td><td class="r">23.299,55</td><td>—</td><td><span class="pill p-ac">Aceito</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="fhd"><h2>CTRCs emitidos para as ofertas</h2>
+    <div class="flt"><label for="fdata2">Data de emissão</label><select id="fdata2"></select><span id="fcnt2" class="fcnt"></span></div></div>
+  <div class="tw"><table id="tctrc">
+    <thead><tr><th>CTRC</th><th>Emissão</th><th>NFs</th><th class="r">Valor frete (R$)</th><th>Placa</th><th>Motorista</th><th>FOR (observação)</th><th>Dia da oferta</th></tr></thead>
+    <tbody>
+      <tr data-d="2026-10-29" data-fr="1226.00"><td class="mono">SPN012442-7</td><td>29/10 22:11</td><td class="mono">158289 + 158290</td><td class="r">1.226,00</td><td><span class="chip">FFJ1B95</span></td><td>FELIPE RODRIGUES AMARO</td><td class="mono">2021495087</td><td><span class="pill p-ok">Sim — 29/10</span></td></tr>
+      <tr data-d="2026-10-30" data-fr="1226.00"><td class="mono">SPN012443-5</td><td>30/10 07:53</td><td class="mono">158300 + 158301</td><td class="r">1.226,00</td><td><span class="chip">MKL0J73</span></td><td>ALAN MARCEL CHANES</td><td class="mono">2021495718</td><td><span class="pill p-ok">Sim — 29/10</span></td></tr>
+      <tr data-d="2026-10-30" data-fr="1226.00"><td class="mono">SPN012444-3</td><td>30/10 08:58</td><td class="mono">158305 + 158306</td><td class="r">1.226,00</td><td><span class="chip">EZU0C13</span></td><td>VALDEMIR LEITE FALCE</td><td class="mono">2021495218</td><td><span class="pill p-ok">Sim — 29/10</span></td></tr>
+      <tr data-d="2026-10-30" data-fr="1226.00"><td class="mono">SPN012445-1</td><td>30/10 10:02</td><td class="mono">158309 + 158312</td><td class="r">1.226,00</td><td><span class="chip">HMV4674</span></td><td>LOURIVAL ALMEIDA DA SILVA</td><td class="mono">2021495172</td><td><span class="pill p-ok">Sim — 29/10</span></td></tr>
+      <tr data-d="2026-10-30" data-fr="1226.00"><td class="mono">SPN012446-0</td><td>30/10 10:06</td><td class="mono">158311</td><td class="r">1.226,00</td><td><span class="chip">CNR7J75</span></td><td>ERICO RODRIGUES DIAS PEDRO</td><td class="mono">2021495089</td><td><span class="pill p-ok">Sim — 29/10</span></td></tr>
+      <tr data-d="2026-10-30" data-fr="1226.00"><td class="mono">SPN012447-8</td><td>30/10 14:14</td><td class="mono">158328 + 158329</td><td class="r">1.226,00</td><td><span class="chip">MKL0J73</span></td><td>ALAN MARCEL CHANES</td><td class="mono">2021495069</td><td><span class="pill p-ok">Sim — 29/10</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <section class="gauge" aria-label="Ofertado x emitido: 6 de 37">
+    <h3>Medidor Ofertado x Emitido</h3>
+    <svg viewBox="0 0 300 175" role="img">
+      <path d="M30 150 A120 120 0 0 1 270 150" fill="none" stroke="var(--line)" stroke-width="44"/>
+      <path d="M30 150 A120 120 0 0 1 270 150" fill="none" stroke="#1b6b3a" stroke-width="44" stroke-dasharray="61.1 377.0"/>
+      <text x="150" y="146" text-anchor="middle" font-family="Barlow Semi Condensed,Arial,sans-serif" font-size="52" font-weight="700" fill="var(--fg)">6</text>
+      <text x="30" y="172" text-anchor="middle" font-family="Barlow,Arial,sans-serif" font-size="13" font-weight="600" fill="var(--fg)">0</text>
+      <text x="270" y="172" text-anchor="middle" font-family="Barlow,Arial,sans-serif" font-size="13" font-weight="600" fill="var(--fg)">37</text>
+    </svg>
+    <div class="pc">16,22%</div>
+    <div class="lg">Emitidas: 6 de 37 ofertas</div>
+  </section>
+
+  <section class="canc">
+    <h2>Ofertas canceladas</h2>
+    <div class="tw"><table id="tcanc">
+      <thead><tr><th>OF</th><th>FOR</th><th>Dia da oferta</th><th>Cancelada em</th><th>Origem → Destino</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">2021495091</td><td class="mono">2021495091</td><td>29/10</td><td>30/10 11:31</td><td>Mairinque → Mairinque 2</td></tr>
+        <tr><td class="mono">2021495118</td><td class="mono">2021495118</td><td>29/10</td><td>30/10 12:01</td><td>Mairinque → Mairinque 2</td></tr>
+        <tr><td class="mono">2021505277</td><td class="mono">2021505277</td><td>30/10</td><td>30/10 13:31</td><td>Mairinque → Mairinque 2</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <p class="rod">Fontes: Outlook (jangaz@jangaz.com.br) — e-mails "Oferta de solicitação de transporte Cargill", 37 ofertas de 29/10 a 30/10 • SSW opção 071 (7 CNPJs da Cargill, 29–30/10) e opção 101 (CTRC, placa e observação FOR), conferido no PDF do CTRC (botão RPS) • Domínio JGZ / SPO • Regra: origem e destino Mairinque = transferência; outro destino = entrega.</p>
+</div>
+<script>
+(function(){
+  var sel=document.getElementById('fdata'),cnt=document.getElementById('fcnt');
+  var rows=[].slice.call(document.querySelectorAll('#tofertas tbody tr[data-d]'));
+  var ds=[];rows.forEach(function(r){if(ds.indexOf(r.dataset.d)<0)ds.push(r.dataset.d)});ds.sort().reverse();
+  function br(d){var p=d.split('-');return p[2]+'/'+p[1]+'/'+p[0]}
+  ds.forEach(function(d){var o=document.createElement('option');o.value=d;o.textContent=br(d);sel.appendChild(o)});
+  var t=document.createElement('option');t.value='*';t.textContent='Todas as datas';sel.appendChild(t);
+  function ap(){var v=sel.value,n=0,e=0;rows.forEach(function(r){var s=(v==='*'||r.dataset.d===v);r.hidden=!s;if(s){n++;if(r.querySelector('.p-ok'))e++}});cnt.textContent=n+(n===1?' oferta':' ofertas')+' • '+e+(e===1?' emitida':' emitidas')}
+  sel.addEventListener('change',ap);ap();
+})();
+</script>
+<script>
+(function(){
+  var sel=document.getElementById('fdata2'),cnt=document.getElementById('fcnt2');if(!sel)return;
+  var rows=[].slice.call(document.querySelectorAll('#tctrc tbody tr[data-d]'));
+  var ds=[];rows.forEach(function(r){if(ds.indexOf(r.dataset.d)<0)ds.push(r.dataset.d)});ds.sort().reverse();
+  function br(d){var p=d.split('-');return p[2]+'/'+p[1]+'/'+p[0]}
+  ds.forEach(function(d){var o=document.createElement('option');o.value=d;o.textContent=br(d);sel.appendChild(o)});
+  var t=document.createElement('option');t.value='*';t.textContent='Todas as datas';sel.appendChild(t);
+  function money(v){return v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}
+  function ap(){var v=sel.value,n=0,s=0;rows.forEach(function(r){var k=(v==='*'||r.dataset.d===v);r.hidden=!k;if(k){n++;s+=parseFloat(r.dataset.fr||0)}});cnt.textContent=n+(n===1?' CTRC':' CTRCs')+' • Frete R$ '+money(s)}
+  sel.addEventListener('change',ap);ap();
+})();
+</script>
+</body></html>
