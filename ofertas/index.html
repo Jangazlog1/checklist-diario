@@ -45,6 +45,7 @@ tbody tr:nth-child(odd){background:color-mix(in srgb,var(--accs) 55%,transparent
 .p-tr{background:var(--accs);color:var(--acc)}.p-en{background:var(--bads);color:var(--bad)}
 .p-ag{background:var(--warns);color:var(--warn)}.p-ac{background:#2fbf6a;color:#fff}
 .canc{display:flex;flex-direction:column;gap:9px}.canc td{white-space:normal}.canc tr.vazio td{color:var(--mut);text-align:center;padding:14px}.p-ok{background:var(--acc);color:#fff}
+.ncanc{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 10px;margin-left:10px;border-radius:15px;background:var(--acc);color:#fff;font-family:var(--fd);font-size:18px;line-height:1;vertical-align:middle;box-shadow:0 0 10px -2px color-mix(in srgb,var(--glow) 70%,transparent)}
 .rod{font-size:11.5px;color:var(--mut);border-top:1px solid var(--line);padding-top:12px;line-height:1.5}
 .hd .rt{display:flex;flex-direction:column;align-items:center;gap:8px}
 .logo{background:#fff;border-radius:8px;padding:10px 16px;line-height:0}.logo img{height:64px;display:block}
@@ -222,7 +223,7 @@ svg text{font-weight:700!important}
   </section>
 
   <section class="canc">
-    <h2>Ofertas canceladas</h2>
+    <h2>Ofertas canceladas <span id="ncanc" class="ncanc">8</span></h2>
     <div class="tw"><table id="tcanc">
       <thead><tr><th>OF</th><th>FOR</th><th>Dia da oferta</th><th>Cancelada em</th><th>Origem → Destino</th></tr></thead>
       <tbody>
@@ -264,5 +265,8 @@ svg text{font-weight:700!important}
   function ap(){var v=sel.value,n=0,s=0;rows.forEach(function(r){var k=(v==='*'||r.dataset.d===v);r.hidden=!k;if(k){n++;s+=parseFloat(r.dataset.fr||0)}});cnt.textContent=n+(n===1?' CTRC':' CTRCs')+' • Frete R$ '+money(s)}
   sel.addEventListener('change',ap);ap();
 })();
+</script>
+<script>
+(function(){var n=document.querySelectorAll('#tcanc tbody tr:not(.vazio)').length;var e=document.getElementById('ncanc');if(e)e.textContent=n;})();
 </script>
 </body></html>
