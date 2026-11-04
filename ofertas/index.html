@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="pt-BR"><head><meta charset="utf-8">
+<html lang="pt-BR" data-theme="light"><head><meta charset="utf-8">
+<meta name="color-scheme" content="light">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Ofertas x Emissões Cargill</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap">
@@ -95,32 +96,48 @@ h2::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:64px;bor
 .kpis .kpi .n{font-size:clamp(32px,4vw,44px)}
 body,body *{font-weight:700!important}
 svg text{font-weight:700!important}
+.abas{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.aba{font-family:var(--fd);font-size:17px;letter-spacing:.6px;text-transform:uppercase;padding:10px 26px;border-radius:999px;border:2px solid var(--acc);background:var(--card);color:var(--acc);cursor:pointer;min-width:190px;transition:background .2s ease,color .2s ease,box-shadow .2s ease,transform .2s ease}
+.aba:hover{transform:translateY(-1px);box-shadow:0 0 14px -3px color-mix(in srgb,var(--glow) 70%,transparent)}
+.aba[aria-selected="true"]{background:var(--acc);color:#fff;box-shadow:0 0 16px -2px color-mix(in srgb,var(--glow) 80%,transparent)}
+.aba:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.aba .q{display:inline-block;margin-left:8px;padding:1px 9px;border-radius:10px;background:color-mix(in srgb,var(--acc) 18%,transparent);font-variant-numeric:tabular-nums}
+.aba[aria-selected="true"] .q{background:rgba(255,255,255,.22)}
+.hd .aba-nome{display:block;text-align:center;font-family:var(--fd);font-size:15px;letter-spacing:2px;text-transform:uppercase;opacity:.85;margin-top:2px}
+[data-t][hidden],.box[hidden],.kpi[hidden]{display:none!important}
+tr.vazio-t td{color:var(--mut);text-align:center;padding:14px}
+@media (prefers-reduced-motion:reduce){.aba,.aba:hover{transition:none;transform:none}}
 </style></head><body>
 <div class="wrap">
+  <nav class="abas" role="tablist" aria-label="Tipo de oferta">
+    <button type="button" class="aba" role="tab" id="aba-tr" data-aba="tr" aria-selected="true">Transferências <span class="q" id="q-tr"></span></button>
+    <button type="button" class="aba" role="tab" id="aba-en" data-aba="en" aria-selected="false">Entregas <span class="q" id="q-en"></span></button>
+  </nav>
   <header class="hd">
     <div class="sp"></div>
-    <div class="tt"><h1>Ofertas x Emissões</h1></div>
+    <div class="tt"><h1>Ofertas x Emissões</h1><span class="aba-nome" id="aba-nome">Transferências</span></div>
     <div class="rt"><div class="logo"><img src="data:image/png;base64,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" alt="Cargill"></div><div class="when">Apurado em 04/11/2026 18:08</div></div>
   </header>
 
   <section class="kpis">
-    <div class="kpi"><div class="n">63</div><div class="l">Ofertas no período</div></div>
-    <div class="kpi"><div class="n">63</div><div class="l">Transferências</div></div>
-    <div class="kpi z"><div class="n">0</div><div class="l">Entregas</div></div>
-    <div class="kpi"><div class="n">34</div><div class="l">Ofertas emitidas</div></div>
-    <div class="kpi w"><div class="n">29</div><div class="l">Aguardando emissão</div></div>
+    <div class="kpi"><div class="n" id="k-of">63</div><div class="l">Ofertas no período</div></div>
+    <div class="kpi"><div class="n" id="k-tr">63</div><div class="l">Transferências</div></div>
+    <div class="kpi z"><div class="n" id="k-en">0</div><div class="l">Entregas</div></div>
+    <div class="kpi"><div class="n" id="k-em">34</div><div class="l">Ofertas emitidas</div></div>
+    <div class="kpi w"><div class="n" id="k-ag">29</div><div class="l">Aguardando emissão</div></div>
   </section>
 
   <section class="kpi kfr" aria-label="Valor de fretes emitidos">
-    <div class="n">R$ 42.910,00</div><div class="l">Valor de fretes emitidos</div>
+    <div class="n" id="k-fr">R$ 42.910,00</div><div class="l">Valor de fretes emitidos</div>
   </section>
 
   <section class="funil">
-    <div class="bar" aria-label="34 de 63 ofertas emitidas"><span style="width:53.97%;background:var(--acc)"></span><span style="width:46.03%;background:var(--warn)"></span></div>
-    <div class="leg"><span><i style="background:var(--acc)"></i>Emitidas: 34 (53,97%)</span><span><i style="background:var(--warn)"></i>Aguardando: 29 (46,03%)</span><span>Período: 29/10 a 04/11 • Critério: OF do e-mail = FOR na observação do CTRC</span></div>
+    <div class="bar" id="bar" aria-label="34 de 63 ofertas emitidas"><span style="width:53.97%;background:var(--acc)"></span><span style="width:46.03%;background:var(--warn)"></span></div>
+    <div class="leg"><span><i style="background:var(--acc)"></i><b id="l-em">Emitidas: 34 (53,97%)</b></span><span><i style="background:var(--warn)"></i><b id="l-ag">Aguardando: 29 (46,03%)</b></span><span>Período: 29/10 a 04/11 • Critério: OF do e-mail = FOR na observação do CTRC</span></div>
   </section>
 
-  <div class="box w"><b>POSIÇÃO DE 04/11 ÀS 18:08 — 63 OFERTAS, 34 EMITIDAS (53,97%).</b> Caixa de entrada conferida e-mail a e-mail: <b>154 e-mails da Cargill</b> desde 29/10 (74 ofertas, 61 aceites e 19 avisos de cancelamento), todos lidos. Desde as 14:08: <b>1 oferta nova</b>, já aceita — 2021534612 (15:30, expedição e entrega 05/11, 18,98 m³). <b>1 CTRC novo</b>: SPN012477-0 (17:20, FFJ1B95, FELIPE RODRIGUES AMARO, NF 158529, R$ 1.226,00, FOR 2021522436, oferta de 03/11). O SPN012476-1 (13:03, HMV4674) teve o motorista confirmado no PDF: LOURIVAL ALMEIDA DA SILVA. <b>1 cancelamento novo</b>: 2021522465 (oferta de 03/11, estava aceita; cancelada às 15:32) — saiu da contagem. Hoje: 17 ofertas recebidas, todas aceitas; 9 CTRCs emitidos. O SPN012471-1 (08:41) segue com a FOR 2021524096, oferta cancelada pela Cargill em 03/11. São <b>26 aceitas</b> aguardando CTRC; sem aceite seguem 2021495179 e 2021499680 (29/10) e 2021503403 (30/10). Canceladas no período: 11 (ver no final). No SSW as NFs 158533 (17:00) e 158535 (17:20) ainda estão sem CTRC.</div>
+  <div class="box w" data-box="tr"><b>POSIÇÃO DE 04/11 ÀS 18:08 — 63 OFERTAS, 34 EMITIDAS (53,97%).</b> Caixa de entrada conferida e-mail a e-mail: <b>154 e-mails da Cargill</b> desde 29/10 (74 ofertas, 61 aceites e 19 avisos de cancelamento), todos lidos. Desde as 14:08: <b>1 oferta nova</b>, já aceita — 2021534612 (15:30, expedição e entrega 05/11, 18,98 m³). <b>1 CTRC novo</b>: SPN012477-0 (17:20, FFJ1B95, FELIPE RODRIGUES AMARO, NF 158529, R$ 1.226,00, FOR 2021522436, oferta de 03/11). O SPN012476-1 (13:03, HMV4674) teve o motorista confirmado no PDF: LOURIVAL ALMEIDA DA SILVA. <b>1 cancelamento novo</b>: 2021522465 (oferta de 03/11, estava aceita; cancelada às 15:32) — saiu da contagem. Hoje: 17 ofertas recebidas, todas aceitas; 9 CTRCs emitidos. O SPN012471-1 (08:41) segue com a FOR 2021524096, oferta cancelada pela Cargill em 03/11. São <b>26 aceitas</b> aguardando CTRC; sem aceite seguem 2021495179 e 2021499680 (29/10) e 2021503403 (30/10). Canceladas no período: 11 (ver no final). No SSW as NFs 158533 (17:00) e 158535 (17:20) ainda estão sem CTRC.</div>
+  <div class="box w" data-box="en" hidden><b>ENTREGAS — NENHUMA OFERTA DE ENTREGA NO PERÍODO.</b> Desde 29/10, todas as ofertas recebidas da Cargill são transferências Mairinque → Mairinque 2. Quando chegar oferta com outro destino, ela aparece nesta aba com os CTRCs, o frete e os cancelamentos correspondentes.</div>
 
   <div class="fhd"><h2>Ofertas por dia</h2>
     <div class="flt"><label for="fdata">Data da oferta</label><select id="fdata"></select><span id="fcnt" class="fcnt"></span></div></div>
@@ -240,31 +257,32 @@ svg text{font-weight:700!important}
     <h3>Medidor Ofertado x Emitido</h3>
     <svg viewBox="0 0 300 175" role="img">
       <path d="M30 150 A120 120 0 0 1 270 150" fill="none" stroke="var(--line)" stroke-width="44"/>
-      <path d="M30 150 A120 120 0 0 1 270 150" fill="none" stroke="#1b6b3a" stroke-width="44" stroke-dasharray="203.5 377.0"/>
-      <text x="150" y="146" text-anchor="middle" font-family="Barlow Semi Condensed,Arial,sans-serif" font-size="52" font-weight="700" fill="var(--fg)">34</text>
+      <path d="M30 150 A120 120 0 0 1 270 150" fill="none" stroke="#1b6b3a" stroke-width="44" id="g-arc" stroke-dasharray="203.5 377.0"/>
+      <text x="150" y="146" text-anchor="middle" font-family="Barlow Semi Condensed,Arial,sans-serif" font-size="52" font-weight="700" fill="var(--fg)" id="g-c">34</text>
       <text x="30" y="172" text-anchor="middle" font-family="Barlow,Arial,sans-serif" font-size="13" font-weight="600" fill="var(--fg)">0</text>
-      <text x="270" y="172" text-anchor="middle" font-family="Barlow,Arial,sans-serif" font-size="13" font-weight="600" fill="var(--fg)">63</text>
+      <text x="270" y="172" text-anchor="middle" font-family="Barlow,Arial,sans-serif" font-size="13" font-weight="600" fill="var(--fg)" id="g-max">63</text>
     </svg>
-    <div class="pc">53,97%</div>
-    <div class="lg">Emitidas: 34 de 63 ofertas</div>
+    <div class="pc" id="g-pc">53,97%</div>
+    <div class="lg" id="g-lg">Emitidas: 34 de 63 ofertas</div>
   </section>
 
   <section class="canc">
-    <h2>Ofertas canceladas <span id="ncanc" class="ncanc">11</span></h2>
+    <div class="fhd"><h2>Ofertas canceladas <span id="ncanc" class="ncanc">11</span></h2>
+    <div class="flt"><label for="fdata3">Data do cancelamento</label><select id="fdata3"></select><span id="fcnt3" class="fcnt"></span></div></div>
     <div class="tw"><table id="tcanc">
       <thead><tr><th>OF</th><th>FOR</th><th>Dia da oferta</th><th>Cancelada em</th><th>Origem → Destino</th></tr></thead>
       <tbody>
-        <tr><td class="mono">2021495091</td><td class="mono">2021495091</td><td>29/10</td><td>30/10 11:31</td><td>Mairinque → Mairinque 2</td></tr>
-        <tr><td class="mono">2021495118</td><td class="mono">2021495118</td><td>29/10</td><td>30/10 12:01</td><td>Mairinque → Mairinque 2</td></tr>
-        <tr><td class="mono">2021505277</td><td class="mono">2021505277</td><td>30/10</td><td>30/10 13:31</td><td>Mairinque → Mairinque 2</td></tr>
-        <tr><td class="mono">2021506110</td><td class="mono">2021506110</td><td>30/10</td><td>31/10 10:48</td><td>Mairinque → Mairinque 2</td></tr>
-        <tr><td class="mono">2021506506</td><td class="mono">2021506506</td><td>30/10</td><td>03/11 10:05</td><td>Mairinque → Mairinque 2</td></tr>
-        <tr><td class="mono">2021508437</td><td class="mono">2021508437</td><td>30/10</td><td>03/11 11:03</td><td>Mairinque → Mairinque 2</td></tr>
-        <tr><td class="mono">2021506505</td><td class="mono">2021506505</td><td>30/10</td><td>03/11 11:24</td><td>Mairinque → Mairinque 2</td></tr>
-        <tr><td class="mono">2021524096</td><td class="mono">2021524096</td><td>03/11</td><td>03/11 13:46</td><td>Mairinque → Mairinque 2</td></tr>
-        <tr><td class="mono">2021506462</td><td class="mono">2021506462</td><td>30/10</td><td>03/11 16:26</td><td>Mairinque → Mairinque 2</td></tr>
-        <tr><td class="mono">2021522296</td><td class="mono">2021522296</td><td>03/11</td><td>04/11 08:56</td><td>Mairinque → Mairinque 2</td></tr>
-        <tr><td class="mono">2021522465</td><td class="mono">2021522465</td><td>03/11</td><td>04/11 15:32</td><td>Mairinque → Mairinque 2</td></tr>
+        <tr data-d="2026-10-30"><td class="mono">2021495091</td><td class="mono">2021495091</td><td>29/10</td><td>30/10 11:31</td><td>Mairinque → Mairinque 2</td></tr>
+        <tr data-d="2026-10-30"><td class="mono">2021495118</td><td class="mono">2021495118</td><td>29/10</td><td>30/10 12:01</td><td>Mairinque → Mairinque 2</td></tr>
+        <tr data-d="2026-10-30"><td class="mono">2021505277</td><td class="mono">2021505277</td><td>30/10</td><td>30/10 13:31</td><td>Mairinque → Mairinque 2</td></tr>
+        <tr data-d="2026-10-31"><td class="mono">2021506110</td><td class="mono">2021506110</td><td>30/10</td><td>31/10 10:48</td><td>Mairinque → Mairinque 2</td></tr>
+        <tr data-d="2026-11-03"><td class="mono">2021506506</td><td class="mono">2021506506</td><td>30/10</td><td>03/11 10:05</td><td>Mairinque → Mairinque 2</td></tr>
+        <tr data-d="2026-11-03"><td class="mono">2021508437</td><td class="mono">2021508437</td><td>30/10</td><td>03/11 11:03</td><td>Mairinque → Mairinque 2</td></tr>
+        <tr data-d="2026-11-03"><td class="mono">2021506505</td><td class="mono">2021506505</td><td>30/10</td><td>03/11 11:24</td><td>Mairinque → Mairinque 2</td></tr>
+        <tr data-d="2026-11-03"><td class="mono">2021524096</td><td class="mono">2021524096</td><td>03/11</td><td>03/11 13:46</td><td>Mairinque → Mairinque 2</td></tr>
+        <tr data-d="2026-11-03"><td class="mono">2021506462</td><td class="mono">2021506462</td><td>30/10</td><td>03/11 16:26</td><td>Mairinque → Mairinque 2</td></tr>
+        <tr data-d="2026-11-04"><td class="mono">2021522296</td><td class="mono">2021522296</td><td>03/11</td><td>04/11 08:56</td><td>Mairinque → Mairinque 2</td></tr>
+        <tr data-d="2026-11-04"><td class="mono">2021522465</td><td class="mono">2021522465</td><td>03/11</td><td>04/11 15:32</td><td>Mairinque → Mairinque 2</td></tr>
       </tbody>
     </table></div>
   </section>
@@ -273,30 +291,56 @@ svg text{font-weight:700!important}
 </div>
 <script>
 (function(){
-  var sel=document.getElementById('fdata'),cnt=document.getElementById('fcnt');
-  var rows=[].slice.call(document.querySelectorAll('#tofertas tbody tr[data-d]'));
-  var ds=[];rows.forEach(function(r){if(ds.indexOf(r.dataset.d)<0)ds.push(r.dataset.d)});ds.sort().reverse();
   function br(d){var p=d.split('-');return p[2]+'/'+p[1]+'/'+p[0]}
-  ds.forEach(function(d){var o=document.createElement('option');o.value=d;o.textContent=br(d);sel.appendChild(o)});
-  var t=document.createElement('option');t.value='*';t.textContent='Todas as datas';sel.appendChild(t);
-  function ap(){var v=sel.value,n=0,e=0;rows.forEach(function(r){var s=(v==='*'||r.dataset.d===v);r.hidden=!s;if(s){n++;if(r.querySelector('.p-ok'))e++}});cnt.textContent=n+(n===1?' oferta':' ofertas')+' • '+e+(e===1?' emitida':' emitidas')}
-  sel.addEventListener('change',ap);ap();
-})();
-</script>
-<script>
-(function(){
-  var sel=document.getElementById('fdata2'),cnt=document.getElementById('fcnt2');if(!sel)return;
-  var rows=[].slice.call(document.querySelectorAll('#tctrc tbody tr[data-d]'));
-  var ds=[];rows.forEach(function(r){if(ds.indexOf(r.dataset.d)<0)ds.push(r.dataset.d)});ds.sort().reverse();
-  function br(d){var p=d.split('-');return p[2]+'/'+p[1]+'/'+p[0]}
-  ds.forEach(function(d){var o=document.createElement('option');o.value=d;o.textContent=br(d);sel.appendChild(o)});
-  var t=document.createElement('option');t.value='*';t.textContent='Todas as datas';sel.appendChild(t);
   function money(v){return v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}
-  function ap(){var v=sel.value,n=0,s=0;rows.forEach(function(r){var k=(v==='*'||r.dataset.d===v);r.hidden=!k;if(k){n++;s+=parseFloat(r.dataset.fr||0)}});cnt.textContent=n+(n===1?' CTRC':' CTRCs')+' • Frete R$ '+money(s)}
-  sel.addEventListener('change',ap);ap();
+  function pct(a,b){return b?(a*100/b).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'%':'0,00%'}
+  function $(id){return document.getElementById(id)}
+  function rows(sel){return [].slice.call(document.querySelectorAll(sel+' tbody tr[data-d]'))}
+  var tipoDe=function(txt){return /Mairinque\s*2/i.test(txt||'')?'tr':'en'};
+  var R1=rows('#tofertas'),R2=rows('#tctrc'),R3=rows('#tcanc'),mapa={};
+  R1.forEach(function(r){var c=r.cells;r.dataset.t=/Entrega/i.test(c[3].textContent)?'en':(/Transfer/i.test(c[3].textContent)?'tr':tipoDe(c[4].textContent));mapa[c[0].textContent.trim()]=r.dataset.t});
+  R3.forEach(function(r){var c=r.cells;r.dataset.t=tipoDe(c[4].textContent);mapa[c[0].textContent.trim()]=mapa[c[0].textContent.trim()]||r.dataset.t});
+  R2.forEach(function(r){var f=r.cells[6].textContent.trim();r.dataset.t=mapa[f]||'tr'});
+  function vazio(tb,cols,txt){var v=tb.querySelector('tr.vazio-t');if(!v){v=document.createElement('tr');v.className='vazio-t';v.innerHTML='<td colspan="'+cols+'"></td>';tb.appendChild(v)}v.cells[0].textContent=txt;return v}
+  function filtro(selId,cntId,R,tb,cols,fmt,nada){
+    var sel=$(selId),cnt=$(cntId),aba='tr';
+    function monta(){var keep=sel.value,ds=[];R.forEach(function(r){if(r.dataset.t===aba&&ds.indexOf(r.dataset.d)<0)ds.push(r.dataset.d)});ds.sort().reverse();
+      sel.innerHTML='';ds.forEach(function(d){var o=document.createElement('option');o.value=d;o.textContent=br(d);sel.appendChild(o)});
+      var t=document.createElement('option');t.value='*';t.textContent='Todas as datas';sel.appendChild(t);
+      sel.value=(keep&&(keep==='*'||ds.indexOf(keep)>=0))?keep:(ds[0]||'*');ap()}
+    function ap(){var v=sel.value,sel_=[];R.forEach(function(r){var k=r.dataset.t===aba&&(v==='*'||r.dataset.d===v);r.hidden=!k;if(k)sel_.push(r)});
+      cnt.textContent=fmt(sel_);var vz=vazio(tb,cols,nada());vz.hidden=sel_.length>0}
+    sel.addEventListener('change',ap);
+    return function(a){aba=a;sel.value='';monta()}}
+  var nomeAba=function(a){return a==='en'?'entrega':'transferência'};
+  var abaAtual='tr';
+  var f1=filtro('fdata','fcnt',R1,document.querySelector('#tofertas tbody'),11,function(s){var e=s.filter(function(r){return r.querySelector('.p-ok')}).length;return s.length+(s.length===1?' oferta':' ofertas')+' • '+e+(e===1?' emitida':' emitidas')},function(){return 'Nenhuma oferta de '+nomeAba(abaAtual)+' no período.'});
+  var f2=filtro('fdata2','fcnt2',R2,document.querySelector('#tctrc tbody'),8,function(s){var t=0;s.forEach(function(r){t+=parseFloat(r.dataset.fr||0)});return s.length+(s.length===1?' CTRC':' CTRCs')+' • Frete R$ '+money(t)},function(){return 'Nenhum CTRC de '+nomeAba(abaAtual)+' no período.'});
+  var f3=filtro('fdata3','fcnt3',R3,document.querySelector('#tcanc tbody'),5,function(s){return s.length+(s.length===1?' cancelada':' canceladas')},function(){return 'Nenhuma oferta de '+nomeAba(abaAtual)+' cancelada até agora.'});
+  [].slice.call(document.querySelectorAll('#tcanc tbody tr.vazio')).forEach(function(r){r.remove()});
+  $('q-tr').textContent=R1.filter(function(r){return r.dataset.t==='tr'}).length;
+  $('q-en').textContent=R1.filter(function(r){return r.dataset.t==='en'}).length;
+  function totais(a){
+    var of=R1.filter(function(r){return r.dataset.t===a}),n=of.length,em=of.filter(function(r){return r.querySelector('.p-ok')}).length,ag=n-em,fr=0;
+    R2.forEach(function(r){if(r.dataset.t===a)fr+=parseFloat(r.dataset.fr||0)});
+    var nc=R3.filter(function(r){return r.dataset.t===a}).length;
+    $('k-of').textContent=n;$('k-tr').textContent=a==='tr'?n:0;$('k-en').textContent=a==='en'?n:0;
+    $('k-tr').parentNode.hidden=a!=='tr';$('k-en').parentNode.hidden=a!=='en';$('k-tr').parentNode.classList.remove('z');$('k-en').parentNode.classList.remove('z');
+    $('k-em').textContent=em;$('k-ag').textContent=ag;$('k-fr').textContent='R$ '+money(fr);
+    var p1=n?em*100/n:0,sp=$('bar').children;sp[0].style.width=p1.toFixed(2)+'%';sp[1].style.width=(n?100-p1:0).toFixed(2)+'%';
+    $('bar').setAttribute('aria-label',em+' de '+n+' ofertas emitidas');
+    $('l-em').textContent='Emitidas: '+em+' ('+pct(em,n)+')';$('l-ag').textContent='Aguardando: '+ag+' ('+pct(ag,n)+')';
+    $('g-arc').setAttribute('stroke-dasharray',(n?Math.PI*120*em/n:0).toFixed(1)+' 377.0');
+    $('g-c').textContent=em;$('g-max').textContent=n;$('g-pc').textContent=pct(em,n);$('g-lg').textContent='Emitidas: '+em+' de '+n+' ofertas';
+    $('ncanc').textContent=nc;}
+  function troca(a){abaAtual=a;
+    [].slice.call(document.querySelectorAll('.aba')).forEach(function(b){b.setAttribute('aria-selected',b.dataset.aba===a?'true':'false')});
+    $('aba-nome').textContent=a==='en'?'Entregas':'Transferências';
+    [].slice.call(document.querySelectorAll('.box[data-box]')).forEach(function(b){b.hidden=b.dataset.box!==a});
+    totais(a);f1(a);f2(a);f3(a);
+    try{history.replaceState(null,'',a==='en'?'#entregas':'#transferencias')}catch(e){}}
+  [].slice.call(document.querySelectorAll('.aba')).forEach(function(b){b.addEventListener('click',function(){troca(b.dataset.aba)})});
+  troca(/entrega/i.test(location.hash)?'en':'tr');
 })();
-</script>
-<script>
-(function(){var n=document.querySelectorAll('#tcanc tbody tr:not(.vazio)').length;var e=document.getElementById('ncanc');if(e)e.textContent=n;})();
 </script>
 </body></html>
